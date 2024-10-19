@@ -16,9 +16,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# install Airflow
-RUN pip install --no-cache-dir apache-airflow==2.6.0
-
 # directorio de trabajo
 WORKDIR /app
 
@@ -26,6 +23,9 @@ COPY requirements.txt .
 
 # instala las dependencias del proyecto
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Instalar Airflow y los proveedores necesarios
+RUN pip install --no-cache-dir apache-airflow[postgres]==2.10.2
 
 COPY . .
 
