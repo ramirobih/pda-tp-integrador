@@ -1,0 +1,17 @@
+version: '3'
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airflow
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__CORE__DAGS_FOLDER=/app/dags
+    volumes:
+      - ./dags:/app/dags
+      - ./scripts:/app/scripts
+      - ./staging:/app/staging
+    ports:
+      - "8080:8080"
+    command: bash -c "airflow db init && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com && airflow webserver"
