@@ -21,8 +21,7 @@ services:
       - .env
     volumes:
       - ./dags:/app/airflow/dags
-      - ./scripts:/app/scripts
-      - ./logs:/app/airflow/logs
+      - ./scripts:/app/airflow/scripts
       - ./plugins:/app/airflow/plugins
       - ./staging:/app/staging
     ports:
