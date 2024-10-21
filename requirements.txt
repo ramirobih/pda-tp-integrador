@@ -4,3 +4,4 @@ python-dotenv
 apache-airflow
 sqlalchemy
 psycopg2-binary
+pytest
