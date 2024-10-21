@@ -11,9 +11,19 @@ services:
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+      - REDSHIFT_HOST=${REDSHIFT_HOST}
+      - REDSHIFT_PORT=${REDSHIFT_PORT}
+      - REDSHIFT_USER=${REDSHIFT_USER}
+      - REDSHIFT_PASS=${REDSHIFT_PASS}
+      - REDSHIFT_DB=${REDSHIFT_DB}
+    env_file:
+      - .env
     volumes:
-      - ./dags:/app/dags
+      - ./dags:/app/airflow/dags
       - ./scripts:/app/scripts
+      - ./logs:/app/airflow/logs
+      - ./plugins:/app/airflow/plugins
       - ./staging:/app/staging
     ports:
       - "8080:8080"

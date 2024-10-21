@@ -7,6 +7,15 @@ from urllib.parse import quote_plus
 from dotenv import load_dotenv
 
 def get_weather_data(cities):
+    """
+    Obtiene los datos meteorológicos de una lista de ciudades utilizando la API de OpenWeatherMap.
+
+    Args:
+        cities (list): Lista de nombres de ciudades Argentinas.
+
+    Returns:
+        pandas.DataFrame: DataFrame con los datos meteorológicos.
+    """   
     api_key = os.getenv('OPENWEATHER_API_KEY')
     if not api_key:
         raise Exception("La API Key no está configurada en las variables de entorno.")
@@ -107,7 +116,7 @@ def insert_data_to_redshift(engine, df, schema_name, table_name):
         print(f"Error al insertar datos: {e}")
         raise
 
-if __name__ == '__main__':
+def main():
     load_dotenv()
 
     cities = [
@@ -138,3 +147,6 @@ if __name__ == '__main__':
         insert_data_to_redshift(engine, df, schema_name, table_name)
     else:
         print("No hay datos para insertar en Redshift.")
+
+if __name__ == '__main__':
+    main()

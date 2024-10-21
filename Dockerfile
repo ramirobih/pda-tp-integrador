@@ -27,10 +27,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Instalar Airflow y los proveedores necesarios
 RUN pip install --no-cache-dir apache-airflow[postgres]==2.10.2
 
+# Copiar el resto del código
 COPY . .
+
+# Dar permisos de ejecución al script entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 # exponer el puerto de Airflow
 EXPOSE 8080
 
-# Luego iniciar el servidor web de Airflow
-CMD ["bash", "-c", "airflow db init && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com && airflow webserver"]
+# Establecer el punto de entrada
+ENTRYPOINT ["bash", "/app/entrypoint.sh"]
