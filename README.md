@@ -13,6 +13,7 @@ Este proyecto extrae datos climáticos de las principales ciudades de Argentina 
 - `docker-compose.yml`: Configuración para levantar los servicios necesarios.
 - `.github/workflows/ci.yml`: Workflow de GitHub Actions para ejecutar los tests.
 - `env.example`: Archivo de ejemplo para configurar las variables de entorno.
+- `entrypoint.sh`: Script bash que maneja la inicialización de Airflow y el inicio de los servicios.
 
 ## Requisitos Previos
 
@@ -27,3 +28,16 @@ Este proyecto extrae datos climáticos de las principales ciudades de Argentina 
    ```bash
    git clone https://github.com/tu_usuario/tu_repositorio.git
    cd tu_repositorio
+
+## Pruebas Unitarias
+
+Este proyecto incluye pruebas unitarias para asegurar el correcto funcionamiento de las funciones principales.
+
+### Ejecutar las pruebas localmente
+
+Para ejecutar las pruebas en tu entorno local:
+
+1. Asegúrate de tener las dependencias instaladas:
+
+   ```bash
+   pip install -r requirements.txt
