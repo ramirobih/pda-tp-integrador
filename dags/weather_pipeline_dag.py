@@ -5,10 +5,11 @@ import sys
 import os
 
 # Añadir el directorio de scripts al path
-sys.path.insert(os.path.join(os.path.dirname(os.path.abspath(__file__)), '/'))
+#sys.path.insert(0,os.path.join(os.path.dirname(os.path.abspath(__file__)), '../scripts'))
 
 # Importar la función main del script weather_extractor.py
-from weather_extractor import main as weather_pipeline
+#
+from scripts.weather_extractor import main as weather_pipeline
 
 default_args = {
     'owner': 'airflow',
